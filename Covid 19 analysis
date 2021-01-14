@@ -1,0 +1,72 @@
+import pandas as pd
+df=pd.read_csv("covid_19_india.csv") #Using pandas to read a csv file
+print(df)
+df.dropna(thresh=1,axis=1,inplace=True) #Droping Nan from rows and updating df
+df["Cured"].sum()
+df1["Cured"].sum()
+print(max(df1["Cured"].sum()),df1["Cured"].sum().idxmax())
+df["Active"]=df["Confirmed"]-df["Cured"]-df["Deaths"] #adding a new column Active
+df.dropna(thresh=2,axis=0,inplace=True)
+df1=df.groupby(df["State/UnionTerritory"])
+df1["Active"].sum().idxmax(),df1["Active"].sum().max()
+df1["Active"].sum().idxmin(),df1["Active"].sum().min()
+df["Death to cured ratio"]=df["Deaths"]/df["Cured"] #adding another column
+df=df.set_index(df["Date"])
+x.dropna(axis=0,inplace=True)
+print(x.idxmax(),x.max())
+print(x.idxmin(),x.min())
+import matplotlib.pyplot as plt
+df['Active'].plot(legend=True)
+plt.show()
+df1=df.groupby(df["State/UnionTerritory"])
+df1.sum()
+df.groupby('State/UnionTerritory')['Active'].plot()
+df.loc[(df["State/UnionTerritory"]=="Delhi")]["Active"].plot(legend=True)
+df.loc[(df["State/UnionTerritory"]=="Delhi")]["Deaths"].plot(legend=True)
+df.loc[(df["State/UnionTerritory"]=="Delhi")]["Cured"].plot(legend=True)
+plt.title("Delhi")
+plt.show()
+df.loc[(df["State/UnionTerritory"]=="Maharashtra")]["Active"].plot(legend=True)
+df.loc[(df["State/UnionTerritory"]=="Maharashtra")]["Deaths"].plot(legend=True)
+df.loc[(df["State/UnionTerritory"]=="Maharashtra")]["Cured"].plot(legend=True)
+plt.title("Maharashtra")
+plt.show()
+x=df.loc[(df["State/UnionTerritory"]=="Maharashtra")]["Active"].sum()
+y=df.loc[(df["State/UnionTerritory"]=="Maharashtra")]["Deaths"].sum()
+z=df.loc[(df["State/UnionTerritory"]=="Maharashtra")]["Cured"].sum()
+s=["Active","Deaths","Cured"]
+d=[x,y,z]
+colors = ["red","orange","blue"]
+plt.pie(d, labels=s,explode = [0.1,0.1,0.1] ,colors=colors,autopct='%1.1f%%', shadow=True)
+plt.title("Maharashtra")
+plt.show()
+x1=df.loc[(df["State/UnionTerritory"]=="Delhi")]["Active"].sum()
+y1=df.loc[(df["State/UnionTerritory"]=="Delhi")]["Deaths"].sum()
+z1=df.loc[(df["State/UnionTerritory"]=="Delhi")]["Cured"].sum()
+s1=["Active","Deaths","Cured"]
+d1=[x1,y1,z1]
+colors = ["red","orange","blue"]
+plt.pie(d1, labels=s1,explode = [0.1,0.1,0.1] ,colors=colors,autopct='%1.1f%%', shadow=True)
+plt.title("Delhi")
+plt.show()
+x2=df.loc[(df["State/UnionTerritory"]=="Maharashtra")]["Active"].iloc[-1]
+y2=df.loc[(df["State/UnionTerritory"]=="Maharashtra")]["Deaths"].iloc[-1]
+z2=df.loc[(df["State/UnionTerritory"]=="Maharashtra")]["Cured"].iloc[-1]
+s2=["Active","Deaths","Cured"]
+d2=[x2,y2,z2]
+colors = ["red","orange","blue"]
+plt.pie(d2, labels=s2,explode = [0.1,0.1,0.1] ,colors=colors,autopct='%1.1f%%', shadow=True)
+plt.title("Last date recorded data of Maharshtra")
+plt.show()
+x3=df.loc[(df["State/UnionTerritory"]=="Delhi")]["Active"].iloc[-1]
+y3=df.loc[(df["State/UnionTerritory"]=="Delhi")]["Deaths"].iloc[-1]
+z3=df.loc[(df["State/UnionTerritory"]=="Delhi")]["Cured"].iloc[-1]
+s3=["Active","Deaths","Cured"]
+d3=[x1,y1,z1]
+colors = ["red","orange","blue"]
+plt.pie(d3, labels=s3,explode = [0.1,0.1,0.1] ,colors=colors,autopct='%1.1f%%', shadow=True)
+plt.title("Last date recorded data of Delhi")
+plt.show()
+df1["Active"].sum()
+
+
